@@ -1,5 +1,6 @@
 import requests
 import time
+from parsel import Selector
 
 
 # Requisito 1
@@ -21,7 +22,12 @@ def fetch(url):
 
 # Requisito 2
 def scrape_updates(html_content):
-    """Seu código deve vir aqui"""
+    if (not html_content):
+        return []
+    response_fetch = fetch(html_content)
+    html_selector = Selector(text=response_fetch)
+    list_links = html_selector.css('a.url::attr(href)').getall()
+    return list_links[1:]
 
 
 # Requisito 3
