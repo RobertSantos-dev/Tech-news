@@ -25,13 +25,17 @@ def scrape_updates(html_content):
     if (not html_content):
         return []
     html = Selector(text=html_content)
-    links = html.css('h2.entry-title a::attr(href)').getall()
-    return links
+    list_links = html.css('h2.entry-title a::attr(href)').getall()
+    return list_links
 
 
 # Requisito 3
 def scrape_next_page_link(html_content):
-    """Seu código deve vir aqui"""
+    html = Selector(text=html_content)
+    link_next = html.css('a.next::attr(href)').get()
+    if (not link_next):
+        return None
+    return link_next
 
 
 # Requisito 4
