@@ -25,9 +25,9 @@ def scrape_updates(html_content):
     if (not html_content):
         return []
     response_fetch = fetch(html_content)
-    html_selector = Selector(text=response_fetch)
-    list_links = html_selector.css('a.url::attr(href)').getall()
-    return list_links[1:]
+    html = Selector(text=response_fetch)
+    links = html.css('h2.entry-title a::attr(href)').getall()
+    return links
 
 
 # Requisito 3
