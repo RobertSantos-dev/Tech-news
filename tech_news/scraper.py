@@ -24,8 +24,7 @@ def fetch(url):
 def scrape_updates(html_content):
     if (not html_content):
         return []
-    response_fetch = fetch(html_content)
-    html = Selector(text=response_fetch)
+    html = Selector(text=html_content)
     links = html.css('h2.entry-title a::attr(href)').getall()
     return links
 
