@@ -69,4 +69,3 @@ def get_tech_news(amount):
         page = scrape_next_page_link(response_fetch)
     create_news(list_news[0:amount])
     return list_news[0:amount]
-
