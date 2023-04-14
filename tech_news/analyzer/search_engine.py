@@ -22,7 +22,7 @@ def search_by_date(date):
     else:
         list_title = []
         search = db.news.find(
-            {'timestamp': format(date_find, '%d/%m/%y')}
+            {'timestamp': format(date_find, '%d/%m/%Y')}
         )
         for value in search:
             list_title.append((value['title'], value['url']))
